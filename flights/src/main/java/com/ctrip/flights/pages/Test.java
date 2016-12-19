@@ -1,4 +1,4 @@
-package com.ctrip.pages;
+package com.ctrip.flights.pages;
 
 import lombok.extern.slf4j.Slf4j;
 
