@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Cleartrip Tests" verbose="1" thread-count="1" >
+    <test name="Sample Test" >
+        <classes>
+            <class name="com.ctrip.tests.FlightsTests" />
+        </classes>
+    </test>
+</suite>
+
