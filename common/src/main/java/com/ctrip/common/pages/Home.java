@@ -1,6 +1,6 @@
 package com.ctrip.common.pages;
 
-import com.ctrip.common.Enums;
+import com.ctrip.common.CommonEnums;
 import com.ctrip.common.Utils.BrowserUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
-import java.util.logging.Handler;
 
 /**
  * Created by manjunath.pandava on 20/12/16.
@@ -26,7 +24,7 @@ public class Home extends BrowserUtils{
         super(newDriver);
     }
 
-    public void gotoLeftMenuItem(Enums.LeftMenu menuItem){
+    public void gotoLeftMenuItem(CommonEnums.LeftMenu menuItem){
         By locator = By.xpath(String.format(leftMenuItemXpath, menuItem.value()));
         WebElement element = driver.findElement(locator);
         element.click();

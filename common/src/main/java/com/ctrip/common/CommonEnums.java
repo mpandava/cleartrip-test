@@ -3,7 +3,7 @@ package com.ctrip.common;
 /**
  * Created by manjunath.pandava on 20/12/16.
  */
-public class Enums {
+public class CommonEnums {
     public enum LeftMenu {
         FLIGHTS("flights"),
         HOTELS("hotels");
