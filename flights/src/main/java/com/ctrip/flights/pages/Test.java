@@ -3,9 +3,7 @@ package com.ctrip.flights.pages;
 import com.ctrip.common.browser.BrowserFactory;
 import com.ctrip.common.data.ELeftMenu;
 import com.ctrip.common.pages.Home;
-import com.ctrip.flights.data.EAirport;
-import com.ctrip.flights.data.ETripType;
-import com.ctrip.flights.data.SearchFlightsInput;
+import com.ctrip.flights.data.*;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -52,7 +50,13 @@ public class Test {
         searchFlightsInput.setChildren(1);
         searchFlightsInput.setInfants(0);
 
-        flightsHome.searchForFlights(searchFlightsInput);
+        FlightsResults flightsResults = flightsHome.searchForFlights(searchFlightsInput);
+        FlightsItinerary flightsItinerary = flightsResults.bookFlight();
+        flightsItinerary.acceptTermsAndConditions();
+        flightsItinerary.clickContinueBooking();
+        flightsItinerary.userLogIn("test@gmail.com", null);
+        flightsItinerary.clickUserLoginContinue();
+
 
     }
 }

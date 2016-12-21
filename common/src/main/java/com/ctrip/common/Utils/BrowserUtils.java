@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
@@ -49,6 +50,19 @@ public class BrowserUtils {
         }catch (Exception e){
             log.error("Exception : {}", e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    public static void waitForElement(WebElement element) {
+        try {
+            setDriverImplicitWaitTo(60);
+            wait.until(ExpectedConditions.visibilityOf(element));
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        }catch (Exception e){
+            log.error("Exception : {}", e.getMessage());
+            e.printStackTrace();
+        }finally {
+            resetDriverImplicitWaitToDefault();
         }
     }
 
