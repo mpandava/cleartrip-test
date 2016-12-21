@@ -18,14 +18,7 @@ import java.util.Date;
 @Slf4j
 public class Test {
     public static void main(String[] args) {
-        System.out.println("test");
-        log.info("test");
 
-        Calendar dd = Calendar.getInstance();
-        dd.setTime(new Date());
-        dd.add(Calendar.DATE, 15);
-
-        System.out.println(new SimpleDateFormat("EEE, dd MMM, YYYY").format(dd.getTime()));
 
         WebDriver driver = BrowserFactory.launchApplication("firefox", "https://www.cleartrip.com/");
         Home home = PageFactory.initElements(driver, Home.class);
@@ -48,7 +41,7 @@ public class Test {
 
         searchFlightsInput.setAdults(2);
         searchFlightsInput.setChildren(1);
-        searchFlightsInput.setInfants(0);
+        searchFlightsInput.setInfants(1);
 
         FlightsResults flightsResults = flightsHome.searchForFlights(searchFlightsInput);
         FlightsItinerary flightsItinerary = flightsResults.bookFlight();
@@ -57,6 +50,31 @@ public class Test {
         flightsItinerary.userLogIn("test@gmail.com", null);
         flightsItinerary.clickUserLoginContinue();
 
+        Traveller traveller = new Traveller();
+        traveller.setTravellerTitle(ETravellerTitle.MR);
+        traveller.setFirstName("AAAA");
+        traveller.setLastName("AAA1");
+        traveller.setDobDay(6);
+        traveller.setDobMonth(4);
+        traveller.setDobYear(1984);
+        traveller.setNationality("Indian");
 
+        flightsItinerary.enterTravellerDetails(ETravellerType.ADULT, 1, traveller);
+        traveller.setLastName("AAA2");
+        traveller.setDobYear(1988);
+        flightsItinerary.enterTravellerDetails(ETravellerType.ADULT, 2, traveller);
+
+        traveller.setTravellerTitle(ETravellerTitle.MISS);
+        traveller.setFirstName("CCCCC");
+        traveller.setLastName("CCC1");
+        traveller.setDobYear(2009);
+        flightsItinerary.enterTravellerDetails(ETravellerType.CHILD, 1, traveller);
+        traveller.setFirstName("IIIII");
+        traveller.setLastName("III1");
+        traveller.setDobYear(2015);
+        flightsItinerary.enterTravellerDetails(ETravellerType.INFANT, 1, traveller);
+
+        flightsItinerary.enterPhoneNumber("9876543210");
+        flightsItinerary.clickTravellerContinueBtn();
     }
 }

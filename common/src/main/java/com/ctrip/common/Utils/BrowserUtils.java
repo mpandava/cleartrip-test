@@ -66,6 +66,25 @@ public class BrowserUtils {
         }
     }
 
+    public static boolean isElementDisplayed(By locator){
+        try{
+            setDriverImplicitWaitTo(2);
+            WebElement element = driver.findElement(locator);
+            if(element.isDisplayed()){
+                return true;
+            }else {
+                return false;
+            }
+        }catch (Exception e){
+            log.info("No Element found with Locator : {}", locator);
+            log.info("Exception : {}", e.getMessage());
+            e.printStackTrace();
+            return false;
+        }finally {
+            resetDriverImplicitWaitToDefault();
+        }
+    }
+
     public void sleepForTime(int seconds){
         try {
             log.info("Sleep for {} seconds", seconds);

@@ -1,6 +1,7 @@
 package com.ctrip.flights.pages;
 
 import com.ctrip.common.Utils.BrowserUtils;
+import com.ctrip.common.data.DataUtils;
 import com.ctrip.flights.data.ETripType;
 import com.ctrip.flights.data.SearchFlightsInput;
 import lombok.extern.slf4j.Slf4j;
@@ -99,7 +100,7 @@ public class FlightsHome extends BrowserUtils{
             waitForPageLoad();
         }
         if (input.getDepartOn()!= null){
-            String dt = new SimpleDateFormat("EEE, dd MMM, YYYY").format(input.getDepartOn());
+            String dt = DataUtils.getDateInSearchStringFormat(input.getDepartOn());
             log.info("Depart On : {}", dt);
             departDateDt.clear();
             departDateDt.sendKeys(dt);
@@ -107,7 +108,7 @@ public class FlightsHome extends BrowserUtils{
             waitForPageLoad();
         }
         if (input.getReturnOn()!= null){
-            String dt = new SimpleDateFormat("EEE, dd MMM, YYYY").format(input.getReturnOn());
+            String dt = DataUtils.getDateInSearchStringFormat(input.getReturnOn());
             log.info("Return On : {}", dt);
             returnDateDt.clear();
             returnDateDt.sendKeys(dt);
