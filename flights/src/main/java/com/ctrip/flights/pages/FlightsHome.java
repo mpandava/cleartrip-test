@@ -1,7 +1,7 @@
 package com.ctrip.flights.pages;
 
 import com.ctrip.common.Utils.BrowserUtils;
-import com.ctrip.flights.data.FlightsEnums;
+import com.ctrip.flights.data.ETripType;
 import com.ctrip.flights.data.SearchFlightsInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -55,7 +55,7 @@ public class FlightsHome extends BrowserUtils{
         super(newDriver);
     }
 
-    public void selectTripType(FlightsEnums.TripType tripType){
+    public void selectTripType(ETripType tripType){
         By locator = By.cssSelector(String.format(aTripTypeCss,tripType.value()));
         WebElement element = driver.findElement(locator);
         if(!element.isSelected()){
@@ -64,7 +64,7 @@ public class FlightsHome extends BrowserUtils{
         waitForPageLoad();
     }
 
-    public FlightsEnums.TripType getSelectedTripType(){
+    public ETripType getSelectedTripType(){
         String tripType = null;
         By locator = By.cssSelector(String.format(tripTypesCss));
         List<WebElement> tripTypes = driver.findElements(locator);
@@ -73,7 +73,7 @@ public class FlightsHome extends BrowserUtils{
                 tripType = type.getAttribute("id");
             }
         }
-        return FlightsEnums.TripType.fromValue(tripType);
+        return ETripType.fromValue(tripType);
     }
 
     public void searchForFlights(SearchFlightsInput input){

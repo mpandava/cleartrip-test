@@ -1,7 +1,7 @@
 package com.ctrip.common.pages;
 
-import com.ctrip.common.CommonEnums;
 import com.ctrip.common.Utils.BrowserUtils;
+import com.ctrip.common.data.ELeftMenu;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +24,7 @@ public class Home extends BrowserUtils{
         super(newDriver);
     }
 
-    public void gotoLeftMenuItem(CommonEnums.LeftMenu menuItem){
+    public void gotoLeftMenuItem(ELeftMenu menuItem){
         By locator = By.xpath(String.format(leftMenuItemXpath, menuItem.value()));
         WebElement element = driver.findElement(locator);
         element.click();

@@ -9,12 +9,15 @@ import java.util.Date;
  * Created by manjunath.pandava on 20/12/16.
  */
 
-public @NoArgsConstructor class SearchFlightsInput {
-    private @Getter @Setter FlightsEnums.Airports from;
-    private @Getter @Setter FlightsEnums.Airports to;
-    private @Getter @Setter Date departOn;
-    private @Getter @Setter Date returnOn;
-    private @Getter @Setter int adults;
-    private @Getter @Setter int children;
-    private @Getter @Setter int infants;
+@Getter
+@Setter
+@NoArgsConstructor
+public class SearchFlightsInput {
+    private EAirport from;
+    private EAirport to;
+    private Date departOn;
+    private Date returnOn;
+    private int adults;
+    private int children;
+    private int infants;
 }

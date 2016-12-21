@@ -1,21 +1,19 @@
-package com.ctrip.common;
+package com.ctrip.common.data;
 
 /**
  * Created by manjunath.pandava on 20/12/16.
  */
-public class CommonEnums {
-    public enum LeftMenu {
+public enum ELeftMenu {
         FLIGHTS("flights"),
         HOTELS("hotels");
 
         private String value;
 
-        LeftMenu(String value) {
+        ELeftMenu(String value) {
             this.value = value;
         }
 
         public String value() {
             return value;
         }
-    }
 }

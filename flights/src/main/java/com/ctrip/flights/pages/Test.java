@@ -1,9 +1,10 @@
 package com.ctrip.flights.pages;
 
-import com.ctrip.common.CommonEnums;
 import com.ctrip.common.browser.BrowserFactory;
+import com.ctrip.common.data.ELeftMenu;
 import com.ctrip.common.pages.Home;
-import com.ctrip.flights.data.FlightsEnums;
+import com.ctrip.flights.data.EAirport;
+import com.ctrip.flights.data.ETripType;
 import com.ctrip.flights.data.SearchFlightsInput;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -30,14 +31,14 @@ public class Test {
 
         WebDriver driver = BrowserFactory.launchApplication("firefox", "https://www.cleartrip.com/");
         Home home = PageFactory.initElements(driver, Home.class);
-        home.gotoLeftMenuItem(CommonEnums.LeftMenu.FLIGHTS);
+        home.gotoLeftMenuItem(ELeftMenu.FLIGHTS);
         FlightsHome flightsHome = PageFactory.initElements(driver, FlightsHome.class);
         System.out.println(flightsHome.getSelectedTripType());
-        flightsHome.selectTripType(FlightsEnums.TripType.ROUND_TRIP);
+        flightsHome.selectTripType(ETripType.ROUND_TRIP);
 
         SearchFlightsInput searchFlightsInput = new SearchFlightsInput();
-        searchFlightsInput.setFrom(FlightsEnums.Airports.BLR);
-        searchFlightsInput.setTo(FlightsEnums.Airports.CCU);
+        searchFlightsInput.setFrom(EAirport.BLR);
+        searchFlightsInput.setTo(EAirport.CCU);
         Calendar depDate = Calendar.getInstance();
         depDate.setTime(new Date());
         depDate.add(Calendar.DATE, 10);
