@@ -3,7 +3,7 @@ package com.ctrip.flights.pages;
 import com.ctrip.common.Utils.BrowserUtils;
 import com.ctrip.common.data.DataUtils;
 import com.ctrip.flights.data.ETripType;
-import com.ctrip.flights.data.SearchFlightsInput;
+import com.ctrip.flights.data.models.SearchFlightsInput;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,7 +14,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -51,8 +50,6 @@ public class FlightsHome extends BrowserUtils{
 
     @FindBy(how = How.CSS, using = "input[id='SearchBtn']")
     WebElement searchFlightsBtn;
-
-
 
 
     public FlightsHome(WebDriver newDriver) {
@@ -133,7 +130,8 @@ public class FlightsHome extends BrowserUtils{
             elm.selectByValue(String.valueOf(input.getInfants()));
             waitForPageLoad();
         }
-        log.info("Click search");
+
+        log.info("Click Flights search button");
         searchFlightsBtn.click();
         waitForPageLoad();
         FlightsResults.waitForPage();

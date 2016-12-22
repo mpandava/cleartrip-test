@@ -4,13 +4,16 @@ import com.ctrip.common.browser.BrowserFactory;
 import com.ctrip.common.data.ELeftMenu;
 import com.ctrip.common.pages.Home;
 import com.ctrip.flights.data.*;
+import com.ctrip.flights.data.models.FlightDetails;
+import com.ctrip.flights.data.models.SearchFlightsInput;
+import com.ctrip.flights.data.models.Traveller;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by manjunath.pandava on 19/12/16.
@@ -44,6 +47,8 @@ public class Test {
         searchFlightsInput.setInfants(1);
 
         FlightsResults flightsResults = flightsHome.searchForFlights(searchFlightsInput);
+        List<FlightDetails> selectedFlightDetails = flightsResults.getSelectedFlightDetails();
+
         FlightsItinerary flightsItinerary = flightsResults.bookFlight();
         flightsItinerary.acceptTermsAndConditions();
         flightsItinerary.clickContinueBooking();

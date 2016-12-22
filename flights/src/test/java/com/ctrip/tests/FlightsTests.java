@@ -4,6 +4,9 @@ import com.ctrip.common.Utils.BaseTestHelper;
 import com.ctrip.common.data.ELeftMenu;
 import com.ctrip.common.pages.Home;
 import com.ctrip.flights.data.*;
+import com.ctrip.flights.data.models.FlightDetails;
+import com.ctrip.flights.data.models.SearchFlightsInput;
+import com.ctrip.flights.data.models.Traveller;
 import com.ctrip.flights.pages.FlightsHome;
 import com.ctrip.flights.pages.FlightsItinerary;
 import com.ctrip.flights.pages.FlightsResults;
@@ -13,6 +16,7 @@ import org.testng.annotations.Test;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by manjunath.pandava on 19/12/16.
@@ -45,7 +49,14 @@ public class FlightsTests extends BaseTestHelper{
         searchFlightsInput.setInfants(1);
 
         FlightsResults flightsResults = flightsHome.searchForFlights(searchFlightsInput);
+        List<FlightDetails> selectedFlightDetails = flightsResults.getSelectedFlightDetails();
+        // get total fare
+
         FlightsItinerary flightsItinerary = flightsResults.bookFlight();
+        // Assert Selected Flight details {compare with search results page info}
+        // Assert total fare {compare with search results page info}
+        // Assert Travellers count {compare with search results page info}
+
         flightsItinerary.acceptTermsAndConditions();
         flightsItinerary.clickContinueBooking();
         flightsItinerary.userLogIn("test@gmail.com", null);
@@ -73,6 +84,8 @@ public class FlightsTests extends BaseTestHelper{
         traveller.setFirstName("IIIII");
         traveller.setLastName("III1");
         traveller.setDobYear(2015);
+        // Assert Travellers count {compare with search results page info}
+        // Assert total fare {compare with search results page info}
         flightsItinerary.enterTravellerDetails(ETravellerType.INFANT, 1, traveller);
 
         flightsItinerary.enterPhoneNumber("9876543210");

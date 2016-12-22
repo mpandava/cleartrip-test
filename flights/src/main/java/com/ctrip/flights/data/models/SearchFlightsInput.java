@@ -1,5 +1,6 @@
-package com.ctrip.flights.data;
+package com.ctrip.flights.data.models;
 
+import com.ctrip.flights.data.EAirport;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

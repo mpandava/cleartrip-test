@@ -16,11 +16,6 @@ import java.net.MalformedURLException;
 public class BaseTestHelper {
     public WebDriver driver;
 
-    @BeforeTest
-    public void initTest(){
-
-    }
-
     @Parameters({"browser", "url"})
     @BeforeMethod
     public void initTest(String browser, String url) {

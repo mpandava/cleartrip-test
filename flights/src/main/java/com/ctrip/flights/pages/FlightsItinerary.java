@@ -2,7 +2,7 @@ package com.ctrip.flights.pages;
 
 import com.ctrip.common.Utils.BrowserUtils;
 import com.ctrip.flights.data.ETravellerType;
-import com.ctrip.flights.data.Traveller;
+import com.ctrip.flights.data.models.Traveller;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 @Slf4j
 public class FlightsItinerary extends BrowserUtils{
 
-    static By itineryBtnLocator = By.cssSelector("input[id='itineraryBtn']");
+    static By itineraryBtnLocator = By.cssSelector("input[id='itineraryBtn']");
     By loginContinueBtnLocator = By.cssSelector("input[id='LoginContinueBtn_1']");
     By travellerContinueBtnLocator = By.cssSelector("input[id='travellerBtn']");
     By paymentSubmitBtnLocator = By.cssSelector("input[id='paymentSubmit']");
@@ -61,18 +61,21 @@ public class FlightsItinerary extends BrowserUtils{
 
 
     public void acceptTermsAndConditions(){
+        log.info(" Accept Terms and consitions");
         action.moveToElement(acceptTermsCBox).perform();
         acceptTermsCBox.click();
         waitForPageLoad();
     }
 
     public void clickContinueBooking(){
+        log.info("Click ContinueBooking Btn ");
         action.moveToElement(itineryBtn).perform();
         itineryBtn.click();
         waitForPage2ndStep();
     }
 
     public void userLogIn(String userEmail, String userPwd){
+        log.info("Enter User login details");
         userEmailTxt.clear();
         userEmailTxt.sendKeys(userEmail);
         if (userPwd != null){
@@ -83,6 +86,7 @@ public class FlightsItinerary extends BrowserUtils{
     }
 
     public void clickUserLoginContinue(){
+        log.info("Click UserLoginContinue Btn ");
         action.moveToElement(loginContinueBtn).perform();
         loginContinueBtn.click();
         waitForPage3rdStep();
@@ -127,31 +131,37 @@ public class FlightsItinerary extends BrowserUtils{
     }
 
     public void enterPhoneNumber(String phoneNumber){
+        log.info("Enter Phone number");
         mobileNumberTxt.clear();
         mobileNumberTxt.sendKeys(phoneNumber);
     }
 
     public void clickTravellerContinueBtn(){
+        log.info("Click TravellerContinueBtn ");
         action.moveToElement(travellerContinueBtn).perform();
         travellerContinueBtn.click();
         waitForPage4thStep();
     }
 
     public static void waitForPage1stStep(){
-        WebElement element = driver.findElement(itineryBtnLocator);
+        log.info("Wait for 1st step in Itinerary page");
+        WebElement element = driver.findElement(itineraryBtnLocator);
         waitForElement(element);
     }
 
     private void waitForPage2ndStep(){
+        log.info("Wait for 2nd step in Itinerary page");
         WebElement element = driver.findElement(loginContinueBtnLocator);
         waitForElement(element);
     }
 
     private void waitForPage3rdStep(){
+        log.info("Wait for 3rd step in Itinerary page");
         WebElement element = driver.findElement(travellerContinueBtnLocator);
         waitForElement(element);
     }
     private void waitForPage4thStep(){
+        log.info("Wait for 4th step in Itinerary page");
         WebElement element = driver.findElement(paymentSubmitBtnLocator);
         waitForElement(element);
     }
